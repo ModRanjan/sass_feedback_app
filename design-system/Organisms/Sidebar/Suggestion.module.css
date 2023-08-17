@@ -1,0 +1,462 @@
+.textSecondary {
+  color: #647196;
+  font-size: 16px;
+  font-weight: 400;
+  margin: 0;
+}
+
+/* **************************** Left Section ********************* */
+/* **************************** Left Section ********************* */
+
+/* header  */
+
+.leftContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.header {
+  width: 100%;
+  height: 137px;
+  flex-shrink: 0;
+  background: url("/assets/suggestions/desktop/background-header.png");
+  background-size: cover;
+
+  border-radius: 10px;
+  padding: 24px;
+  display: flex;
+}
+
+.hamburgerbtn {
+  display: none;
+}
+
+.backdrop {
+  /* display: none; */
+}
+
+.headerContent {
+  margin-top: auto;
+}
+
+.headerContent p:first-child {
+  color: #fff;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.25px;
+}
+
+.headerContent p:last-child {
+  color: #fff;
+  font-size: 15px;
+  font-weight: 500;
+  opacity: 0.75;
+}
+
+/* Left content */
+
+.leftContentContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Tag Container */
+
+.tagContainer {
+  border-radius: 10px;
+  background: #fff;
+  padding: 24px;
+
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 8px;
+  row-gap: 14px;
+}
+
+.tagBtn {
+  padding: 5px 16px;
+  border-radius: 10px;
+  background: #f2f4ff;
+
+  color: #4661e6;
+  font-size: 13px;
+  font-weight: 600;
+
+  transition: background-color 0.3s ease;
+}
+
+.tagBtn:hover {
+  background-color: #cfd7ff;
+}
+
+.tagBtn.active {
+  background-color: #4661e6;
+  color: #fff;
+}
+
+/* RoadMap Overview */
+
+.roadMapOverview {
+  border-radius: 10px;
+  background: #fff;
+  padding: 24px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.head {
+  display: flex;
+  justify-content: space-between;
+}
+
+.head p {
+  color: #3a4374;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.25px;
+  margin: 0;
+}
+
+.head a {
+  color: #4661e6;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration-line: underline;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.list li {
+  display: flex;
+  justify-content: space-between;
+
+  padding-left: 24px;
+  position: relative;
+}
+
+.list li span:last-child {
+  font-weight: 700;
+}
+
+.list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 8px;
+  height: 8px;
+  background-color: #f49f85;
+  border-radius: 50%;
+}
+
+.list li:nth-child(1)::before {
+  background-color: #f49f85;
+}
+
+.list li:nth-child(2)::before {
+  background-color: #ad1fea;
+}
+
+.list li:nth-child(3)::before {
+  background-color: #62bcfa;
+}
+
+/* **************************** Right Section ********************* */
+/* **************************** Right Section ********************* */
+
+.rightContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.cardContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* suggestion card */
+.card {
+  padding: 28px 32px;
+  border-radius: 10px;
+  background: #fff;
+
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.cardLeft {
+  width: 80px;
+}
+
+.cardLeft button {
+  padding: 8px 9px;
+  border-radius: 10px;
+  background: #f2f4fe;
+
+  display: flex;
+  flex-direction: column;
+  row-gap: 8px;
+  align-items: center;
+
+  color: #3a4374;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: -0.181px;
+
+  transition: background 0.3s ease;
+}
+
+.cardLeft button:hover {
+  background: #cfd7ff;
+}
+
+.cardRight {
+  width: 60px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.cardRight button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  color: #3a4374;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: -0.222px;
+}
+
+.cardBody {
+  width: calc(100% - 140px);
+}
+
+.cardBody .heading {
+  color: #3a4374;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.25px;
+  margin: 0;
+}
+
+.cardBody .textSecondary {
+  margin: 4px 0 0;
+}
+
+.cardBody button {
+  border-radius: 10px;
+  background: #f2f4ff;
+  padding: 5px 16px;
+
+  color: #4661e6;
+  font-size: 13px;
+  font-weight: 600;
+  margin-top: 12px;
+}
+
+.card:hover .cardBody .heading {
+  color: #4661e6;
+}
+
+/*  Empty suggestions */
+
+.emptyCard {
+  padding: 110px 30px;
+  border-radius: 10px;
+  background: #fff;
+}
+
+.wrapper {
+  max-width: 450px;
+  margin: 0 auto;
+  text-align: center;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.emptyHeading {
+  color: #3a4374;
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -0.333px;
+  margin: 53px 0 0;
+}
+
+.wrapper .textSecondary {
+  margin: 16px 0 0;
+}
+
+.wrapper button {
+  padding: 12px 24px;
+  border-radius: 10px;
+  background: #ad1fea;
+
+  color: #f2f4fe;
+  font-size: 14px;
+  font-weight: 700;
+  margin-top: 48px;
+}
+
+.wrapper button:hover {
+  background: #c75af6;
+}
+
+@media screen and (max-width: 1024px) {
+  .textSecondary {
+    font-size: 13px;
+  }
+  .leftContainer {
+    flex-direction: row;
+    gap: 0px;
+  }
+
+  .header {
+    width: calc(31% - 5px);
+    height: unset;
+    background: url("/assets/suggestions/tablet/background-header.png");
+    background-size: cover;
+    margin-right: 10px;
+  }
+
+  .leftContentContainer {
+    width: calc(69% - 5px);
+    flex-direction: row;
+    gap: 10px;
+  }
+
+  .tagContainer {
+    width: calc(52% - 5px);
+  }
+
+  .roadMapOverview {
+    width: calc(48% - 5px);
+  }
+
+  .emptyHeading {
+    font-size: 18px;
+    letter-spacing: -0.333px;
+    margin-top: 39px;
+  }
+
+  .wrapper button {
+    font-size: 13px;
+    margin-top: 24px;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .cardContainer {
+    padding: 0 24px 24px;
+  }
+  .card {
+    margin: 0 auto;
+    max-width: 400px;
+  }
+
+  .cardBody {
+    width: 100%;
+  }
+
+  .cardBody .heading {
+    font-size: 13px;
+    letter-spacing: -0.181px;
+  }
+
+  .cardLeft,
+  .cardRight {
+    width: 50%;
+    margin-top: 16px;
+  }
+
+  .cardLeft button {
+    flex-direction: row;
+    gap: 10px;
+    padding: 6px 13px;
+  }
+
+  .cardRight button {
+    font-size: 13px;
+  }
+
+  /* top navbar */
+  .leftContainer {
+    position: relative;
+    width: 100%;
+  }
+  .leftContentContainer {
+    position: absolute;
+    top: 72px;
+    /* right: 0; */
+    right: -271px;
+    z-index: 10;
+
+    background: #f7f8fd;
+    padding: 24px;
+    flex-direction: column;
+    height: 100vh;
+    width: 271px;
+    gap: 24px;
+
+    transition: right 0.5s ease-in;
+  }
+
+  .backdrop {
+    display: block;
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 72px;
+    left: 0;
+    opacity: 0.5;
+    background: #000;
+    z-index: 9;
+    transition: opacity 0.5s ease-in;
+  }
+
+  .tagContainer,
+  .roadMapOverview {
+    width: 100%;
+  }
+
+  .header {
+    width: 100%;
+    height: 72px;
+    background: url("/assets/suggestions/mobile/background-header.png");
+    background-size: cover;
+    border-radius: 0;
+    padding: 16px 24px;
+
+    justify-content: space-between;
+  }
+
+  .headerContent {
+    margin-top: none;
+  }
+
+  .headerContent p:first-child {
+    font-size: 15px;
+    letter-spacing: -0.187px;
+  }
+
+  .headerContent p:last-child {
+    font-size: 13px;
+  }
+
+  .hamburgerbtn {
+    display: block;
+  }
+}

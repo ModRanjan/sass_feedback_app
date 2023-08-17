@@ -1,0 +1,278 @@
+.container {
+  display: flex;
+  gap: 30px;
+}
+
+.headWrapper {
+  margin-top: 48px;
+}
+
+.PlannedContainer,
+.inProgressContainer,
+.liveContainer {
+  width: calc(33.33% - 20px);
+}
+
+.headWrapper .head {
+  width: calc(33.33% - 20px);
+}
+
+.PlannedContainer .head,
+.inProgressContainer .head,
+.liveContainer .head {
+  display: none;
+}
+
+.textHeading {
+  color: #3a4374;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.25px;
+  margin: 0;
+}
+
+.textDesc {
+  color: #647196;
+  font-size: 16px;
+  font-weight: 400;
+  margin: 0;
+}
+
+.head .textDesc {
+  margin: 4px 0 0;
+}
+
+.cardContainer {
+  margin-top: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.card {
+  padding: 25px 32px 32px;
+  border-radius: 5px;
+  background: #fff;
+  border-top: 6px solid #f49f85;
+}
+
+.card .cardHeading {
+  margin-top: 8px;
+}
+
+.card .cardHeading:hover {
+  color: #4661e6;
+}
+
+.card .cardDesc {
+  margin-top: 4px;
+}
+
+.card .status {
+  list-style-type: none; /* Hide default bullet */
+  padding-left: 24px;
+  position: relative;
+}
+
+.card .status::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 8px;
+  height: 8px;
+  background-color: #f49f85;
+  border-radius: 50%;
+}
+
+.featureBtn {
+  border-radius: 10px;
+  background: #f2f4ff;
+  padding: 5px 16px;
+  margin-top: 16px;
+
+  color: #4661e6;
+  font-size: 13px;
+  font-weight: 650;
+}
+
+.cardFooter {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 16px;
+}
+
+.cardFooter button {
+  border-radius: 10px;
+  background: #f2f4fe;
+
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+
+  color: #3a4374;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: -0.181px;
+
+  transition: background 0.3s ease;
+}
+
+.cardFooter button:last-child {
+  background-color: unset;
+  font-size: 16px;
+}
+
+.cardFooter button:first-child:hover {
+  background: #cfd7ff;
+}
+
+.cardFooter button:first-child.active {
+  background: #4661e6;
+  color: #fff;
+}
+
+/* for InProgress Container */
+.inProgressContainer .card {
+  border-color: #ad1fea;
+}
+
+.inProgressContainer .card .status::before {
+  background-color: #ad1fea;
+}
+
+/* for Live Container */
+.liveContainer .card {
+  border-color: #62bcfa;
+}
+
+.liveContainer .card .status::before {
+  background-color: #62bcfa;
+}
+
+@media screen and (max-width: 1024px) {
+  .container {
+    gap: 10px;
+  }
+
+  .headWrapper {
+    margin-top: 32px;
+  }
+
+  .PlannedContainer,
+  .inProgressContainer,
+  .liveContainer {
+    width: calc(33.33% - 6.7px);
+  }
+
+  .headWrapper .head {
+    width: calc(33.33% - 6.7px);
+  }
+
+  .textHeading {
+    font-size: 14px;
+    letter-spacing: -0.194px;
+  }
+
+  .textDesc {
+    font-size: 14px;
+  }
+
+  .cardContainer {
+    margin-top: 24px;
+    gap: 16px;
+  }
+
+  .card {
+    padding: 20px 20px 24px;
+  }
+
+  .cardFooter button:last-child {
+    font-size: 13px;
+  }
+}
+
+/* For Mobile view */
+
+.RoadMapNavbar {
+  width: 100%;
+  display: none;
+  border-bottom: 1px solid rgba(140, 146, 179, 0.4);
+
+  background-color: #f7f8fd;
+  position: sticky;
+  top: 100px;
+  z-index: 2;
+}
+
+.navItem {
+  padding: 20px 10px;
+  width: 33.33%;
+
+  opacity: 0.4;
+}
+
+.navItem p {
+  color: #3a4374;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: -0.181px;
+}
+
+.navItem.active0 {
+  opacity: 1;
+  border-bottom: 4px solid rgba(244, 159, 133, 1);
+}
+
+.navItem.active1 {
+  opacity: 1;
+  border-bottom: 4px solid #ad1fea;
+}
+
+.navItem.active2 {
+  opacity: 1;
+  border-bottom: 4px solid rgba(98, 188, 250, 1);
+}
+
+@media screen and (max-width: 650px) {
+  .headWrapper {
+    display: none;
+  }
+
+  .container {
+    padding: 24px;
+  }
+
+  .PlannedContainer .head,
+  .inProgressContainer .head,
+  .liveContainer .head {
+    display: block;
+    width: 100%;
+  }
+
+  .PlannedContainer .head .textHeading,
+  .inProgressContainer .head .textHeading,
+  .liveContainer .head .textHeading {
+    font-size: 18px;
+    letter-spacing: -0.25px;
+  }
+
+  .textDesc {
+    font-size: 13px;
+  }
+
+  .PlannedContainer,
+  .inProgressContainer,
+  .liveContainer {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+
+  .RoadMapNavbar {
+    display: flex;
+  }
+}
