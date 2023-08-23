@@ -8,6 +8,7 @@ type SuggestionCardType = {
   messagesCount: number;
   description: string;
   onClick?: () => void;
+  upVoteHandler: (value: number) => void;
 };
 
 export const SuggestionCard = ({
@@ -16,12 +17,12 @@ export const SuggestionCard = ({
   tag,
   messagesCount,
   description,
-  onClick,
+  onClick,upVoteHandler
 }: SuggestionCardType) => {
   return (
     <div className='suggestion-card'>
       <div className='left-container'>
-        <button className='btn-interactive'>
+        <button className='btn-interactive' onClick={()=>upVoteHandler(likes)}>
           <ArrowUpIcon />
           {likes}
         </button>

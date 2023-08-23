@@ -30,6 +30,13 @@ const View = ({
       setUserData(Data.productRequests[id]);
     }
   }, [id]);
+  const upVoteHandler = (value: number) => {
+    
+
+    const tempVote = value + 1;
+    
+  };
+
 
   return (
     <>
@@ -51,7 +58,8 @@ const View = ({
       </div>
       {userData && (
         <SuggestionCard
-          likes={25}
+        upVoteHandler={upVoteHandler}
+          likes={userData.upvotes}
           heading={userData.title}
           tag={"feature"}
           messagesCount={userData?.comments?.length ?? 0}

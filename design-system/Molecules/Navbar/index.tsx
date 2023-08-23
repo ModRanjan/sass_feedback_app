@@ -4,13 +4,11 @@ import { SuggestionIcon } from '@/design-system/Atom/Icons/SuggestionIcon';
 
 type NavbarType = {
   suggestionCount: number;
-  upVoteHandler: (value: number) => void;
   feedbackHandler: () => void;
 };
 
 const Navbar = ({
   suggestionCount,
-  upVoteHandler,
   feedbackHandler,
 }: NavbarType) => {
   return (
@@ -19,7 +17,7 @@ const Navbar = ({
         <SuggestionIcon />
 
         <h3 className='suggestion-count'>{suggestionCount} Suggestions</h3>
-        <button className='btn dropdown-btn' onClick={() => upVoteHandler()}>
+        <button className='btn dropdown-btn' onClick={() => console.log("object")}>
           <p>Sort by :</p>
           Most Upvotes
           <ArrowDownIcon color='#fff' />

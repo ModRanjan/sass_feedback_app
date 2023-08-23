@@ -1,10 +1,10 @@
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useRouter, useSearchParams } from "next/navigation";
 
-import Navbar from '@/design-system/Molecules/Navbar';
-import EmptyCard from './EmptyCard';
-import { SuggestionCard } from '@/design-system/Molecules/SuggestionCard';
-import usersData from '../../../config/data.json';
-import { useState } from 'react';
+import Navbar from "@/design-system/Molecules/Navbar";
+import EmptyCard from "./EmptyCard";
+import { SuggestionCard } from "@/design-system/Molecules/SuggestionCard";
+import usersData from "../../../config/data.json";
+import { useState } from "react";
 
 const Suggestions = () => {
   const router = useRouter();
@@ -13,24 +13,24 @@ const Suggestions = () => {
 
   const upVoteHandler = (value: number) => {
     setUpvotes(value);
-    
+
     const tempVote = value + 1;
     setUpvotes(tempVote);
   };
 
   return (
-    <div className='suggestions'>
+    <div className="suggestions">
       <Navbar
         suggestionCount={6}
-        upVoteHandler={upVoteHandler}
         feedbackHandler={() => router.push(`/feedback/`)}
       />
 
-      <div className='suggestion-card-container'>
+      <div className="suggestion-card-container">
         {suggestionData.length ? (
           suggestionData.map((suggestion) => {
             return (
               <SuggestionCard
+                upVoteHandler={upVoteHandler}
                 key={suggestion.id}
                 onClick={() => router.push(`/feedback/${suggestion.id}`)}
                 likes={suggestion.upvotes}
