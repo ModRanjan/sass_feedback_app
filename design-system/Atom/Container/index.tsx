@@ -1,19 +1,13 @@
 import { FC, ReactNode } from 'react';
-import { cn } from '@/lib/utils';
 
-type ContainerProps = {
+interface IContainer extends React.HTMLAttributes<HTMLDivElement> {
   children: ReactNode;
-  className?: string;
-};
+}
 
-export const Container: FC<ContainerProps> = ({ children, className }) => {
+export const Container: FC<IContainer> = ({ children, ...props }) => {
+  const { className, ...rest } = props;
   return (
-    <div
-      className={cn(
-        'mx-auto my-0 max-w-[120rem] w-full px-0 lg:px-8',
-        className
-      )}
-    >
+    <div className={`container ${className}`} {...rest}>
       {children}
     </div>
   );

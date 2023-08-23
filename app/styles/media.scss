@@ -1,0 +1,18 @@
+// Will apply when screen width is >= 600px
+@mixin small {
+  @media only screen and (min-width: 600px) {
+    @content;
+  }
+}
+// Will apply when screen width is >= 768px
+@mixin medium {
+  @media only screen and (min-width: 768px) {
+    @content;
+  }
+}
+// Will apply when screen width is >= 1024px
+@mixin default {
+  @media only screen and (min-width: 1024px) {
+    @content;
+  }
+}

@@ -1,83 +1,84 @@
+'use client';
+import { useRouter } from 'next/navigation';
+import ArrowLeftIcon from '@/design-system/Atom/Icons/ArrowLeftIcon';
+import NewFeedbackIcon from '@/design-system/Atom/Icons/NewFeedbackIcon';
+
 const CreateFeedback = () => {
+  const router = useRouter();
+  const createFeedbackHandler = async () => {
+    alert('Feedback Added');
+  };
+
   return (
-    <div className='relative mx-auto w-full lg:w-1/3 bg-white shadow-lg px-1 sm:px-5 py-5 mt-10 rounded-md font-sans'>
-      <div className='absolute text-2xl left-10 -top-5'>
-        <svg
-          xmlns='http://www.w3.org/2000/svg'
-          width='56'
-          height='56'
-          viewBox='0 0 56 56'
-          fill='none'
-        >
-          <circle cx='28' cy='28' r='28' fill='url(#paint0_radial_0_2017)' />
-          <path
-            d='M30.3425 36V30.1657H36.0295V25.8637H30.3425V20H25.7459V25.8637H20V30.1657H25.7459V36H30.3425Z'
-            fill='white'
-          />
-          <defs>
-            <radialGradient
-              id='paint0_radial_0_2017'
-              cx='0'
-              cy='0'
-              r='1'
-              gradientUnits='userSpaceOnUse'
-              gradientTransform='translate(58.184 -5.81647) rotate(129.411) scale(93.4169)'
-            >
-              <stop stop-color='#E84D70' />
-              <stop offset='0.530886' stop-color='#A337F6' />
-              <stop offset='1' stop-color='#28A7ED' />
-            </radialGradient>
-          </defs>
-        </svg>
+    <div className='create-feedback-container'>
+      <div className='feedback-header'>
+        <button className='btn back-btn' onClick={() => router.push('/')}>
+          <span className='-ml-4'>
+            <ArrowLeftIcon width={10} height={10} color='#4661E6' />
+          </span>
+
+          <span className='text-grey'>Go back</span>
+        </button>
       </div>
-      <div className='space-y-8 px-10 pt-8'>
-        <div className=' font-jost text-xl font-bold text-[#3A4374]'>
-          Create New Feedback
+      <div className='create-feedback'>
+        <div className='new-feedback-icon'>
+          <NewFeedbackIcon />
         </div>
-        <div>
-          <div className='text-[#3A4374] font-jost font-bold text-lg'>
-            Feedback Title
-          </div>
-          <p className='text-[#647196] font-jost font-normal text-lg'>
-            Add a short, descriptive headline
-          </p>
-          <input className='w-full rounded-md h-12 ' />
-        </div>
-        <div>
-          <div className='text-[#3A4374] font-jost font-bold text-lg'>
-            Category
-          </div>
-          <p className='text-[#647196] font-jost font-normal text-lg'>
-            Choose a category for your feedback
-          </p>
-          <select className='w-full text-lg  h-20 px-5 bg-[#F7F8FD] rounded-md'>
-            <option>Feature</option>
-            <option> UI</option>
-            <option> UX</option>
-            <option>Enhancement</option>
-            <option>Bug</option>
-          </select>
-        </div>
-        <div>
+
+        <h3 className='create-feedback-title'>Create New Feedback</h3>
+
+        <form className='feedback-form' onSubmit={createFeedbackHandler}>
           <div>
-            <div className='text-[#3A4374] font-jost font-bold text-lg'>
-              Feedback Detail
-            </div>
-            <p className='text-[#647196] font-jost font-normal text-[16px]'>
-              Include any specific comments on what should be improved, added,
-              etc.
-            </p>
-            <textarea className='w-full h-40' />
+            <label htmlFor='feedback-title'>
+              Feedback Title
+              <p className='label-description'>
+                Add a short, descriptive headline
+              </p>
+            </label>
+            <input id='feedback-title' className='w-full rounded-md h-12 ' />
           </div>
-        </div>
-        <div className='space-x-5 text-end'>
-          <button className='w-40 h-10 bg-[#3A4374] text-lg text-[#F2F4FE] rounded-lg'>
-            Cancel
-          </button>
-          <button className='w-60 h-10  text-lg text-[#F2F4FE]  bg-[#AD1FEA] rounded-lg'>
-            Add Feedback
-          </button>
-        </div>
+          <div>
+            <label className='body-3'>
+              Category
+              <p className='label-description'>
+                Choose a category for your feedback
+              </p>
+            </label>
+
+            <select className='select-feature'>
+              <option>Feature</option>
+              <option> UI</option>
+              <option> UX</option>
+              <option>Enhancement</option>
+              <option>Bug</option>
+            </select>
+          </div>
+
+          <div>
+            <div>
+              <label className='body-3'>
+                Feedback Detail
+                <p className='label-description'>
+                  Include any specific comments on what should be improved,
+                  added, etc.
+                </p>
+              </label>
+              <textarea className='textarea' rows={3} />
+            </div>
+          </div>
+          <div className='feedback-footer'>
+            <button
+              type='button'
+              className='btn btn--tertiary'
+              onClick={() => router.push('/')}
+            >
+              Cancel
+            </button>
+            <button className='btn btn--primary' type='submit'>
+              Add Feedback
+            </button>
+          </div>
+        </form>
       </div>
     </div>
   );

@@ -1,5 +1,7 @@
-import './globals.css';
+import './styles/main.scss';
 import type { Metadata } from 'next';
+
+import { Container } from '@/design-system/Atom/Container';
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -13,8 +15,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang='en'>
+      <head>
+        <link rel='icon' href='/favicon-32x32.ico' />
+      </head>
       <body>
-        <main className='flex min-h-screen flex-col py-7'> {children} </main>
+        <main>
+          <Container>{children}</Container>{' '}
+        </main>
       </body>
     </html>
   );

@@ -1,12 +1,13 @@
 'use client';
+
 import { useEffect, useState } from 'react';
-import useWindowSize from '@/utils/hooks/WindowSize.jsx';
+import useWindowSize from '@/hooks/useWindowSize';
 import classes from './RoadMapContent.module.css';
 import Data from '@/config/data.json';
 import FeedbackCard from '@/design-system/Atom/Cards';
 import { ProductRequest } from '@/types/DataTypes';
 
-export const RoadMapContent = () => {
+const RoadmapContent = () => {
   const [isMob, setIsMob] = useState(true);
   const [status, setStatus] = useState(0);
   const size = useWindowSize();
@@ -91,31 +92,16 @@ export const RoadMapContent = () => {
       </div>
 
       {/* headWrapper is only visible for bigger screens */}
-      <div className='grid grid-cols-3 gap-4 space-x-4 mt-15'>
-        {statuses &&
-          statuses.map((status) => {
-            return (
-              <div className={`w-[calc(33.33% - 16px)] `}>
-                <div className='flex flex-col'>
-                  <h3 className='text-primary-lighter capitalize'>
-                    {status} &#40;
-                    {status === 'planned' && plannedItems?.length}
-                    {status === 'in-progress' && itemsInProgress?.length}
-                    {status === 'live' && itemsLive?.length}
-                    &#41;
-                  </h3>
+      <div className='roadmap-container'>
+        <div>
+          <div className={`header`}>
+            <h3 className='text-primary-lighter capitalize'>
+              planned &#40;{status}&#41;
+            </h3>
 
-                  <p className='text-md text-grey'>
-                    Ideas prioritized for research
-                  </p>
-                </div>
-              </div>
-            );
-          })}
-      </div>
+            <p className='body-1'>Ideas prioritized for research</p>
+          </div>
 
-      <div className='grid grid-cols-3 gap-4 space-x-4 mb-15'>
-        <div className='col-span-1'>
           {!isMob &&
             plannedItems &&
             plannedItems.map((item) => {
@@ -124,13 +110,19 @@ export const RoadMapContent = () => {
                   key={item.id}
                   data={item}
                   comments={item.comments?.length ?? 0}
-                  borderColor='border-danger-lighter'
+                  borderColor='#f49f85'
                 />
               );
             })}
         </div>
 
-        <div className='col-span-1'>
+        <div>
+          <div className={`header`}>
+            <h3>in-progress &#40;{status}&#41;</h3>
+
+            <p className='body-1'>Currently being developed</p>
+          </div>
+
           {(!isMob || status === 3) &&
             itemsInProgress &&
             itemsInProgress.map((item) => {
@@ -139,13 +131,19 @@ export const RoadMapContent = () => {
                   key={item.id}
                   data={item}
                   comments={item.comments?.length ?? 0}
-                  borderColor='border-tertiary'
+                  borderColor='#AD1FEA'
                 />
               );
             })}
         </div>
 
-        <div className='col-span-1'>
+        <div>
+          <div className={`header`}>
+            <h3>live &#40;{status}&#41;</h3>
+
+            <p className='body-1'>Released features</p>
+          </div>
+
           {!isMob &&
             itemsLive &&
             itemsLive.map((item) => {
@@ -154,7 +152,7 @@ export const RoadMapContent = () => {
                   key={item.id}
                   data={item}
                   comments={item.comments?.length ?? 0}
-                  borderColor='border-secondary-lighter'
+                  borderColor='#62BCFA'
                 />
               );
             })}
@@ -163,3 +161,5 @@ export const RoadMapContent = () => {
     </>
   );
 };
+
+export default RoadmapContent;

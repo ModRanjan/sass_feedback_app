@@ -1,78 +1,88 @@
 'use client';
-import { useState } from 'react';
-import classes from './Suggestion.module.css';
-import { useRouter } from 'next/navigation';
 
-import Link from 'next/link';
+import { useEffect, useState } from 'react';
 
-import { Highlight } from '@/design-system/Atom/Button';
+import { CrossIcon } from '@/design-system/Atom/Icons/CrossIcon';
+import { Hamburger } from '@/design-system/Atom/Icons/Hamburger';
 
-const Sidebar = () => {
-  const router = useRouter();
+type RoadmapType = {
+  roadmapHandler: () => void;
+};
+
+const Sidebar = ({ roadmapHandler }: RoadmapType) => {
+  const [tags, setTags] = useState<string[]>([]);
+  const [activeTag, setActiveTAg] = useState<string>('All');
   const [isDrowerOpen, setIsDrowerOpen] = useState(false);
+  console.log('isDrowerOpen', isDrowerOpen);
+
+  useEffect(() => {
+    const tags = ['All', 'UI', 'UX', 'Enhancement', 'Bug', 'Feature'];
+
+    setActiveTAg('All');
+    setTags(tags);
+  }, []);
 
   return (
-    <div className={classes.leftContainer}>
-      <div className={classes.header}>
-        <div className={classes.headerContent}>
-          <h2 className='text-white'>Eqaim</h2>
-          <p>Feedback Board</p>
+    <div className='sidebar'>
+      <div className='header'>
+        <div className='header-content'>
+          <h2>Eqaim</h2>
+          <p className='body-2'>Feedback Board</p>
         </div>
 
         {/* hamburger btn only appears in mobile view */}
         <button
-          className={classes.hamburgerbtn}
+          className='hamburger-btn'
           onClick={() => setIsDrowerOpen(!isDrowerOpen)}
         >
-          {isDrowerOpen ? (
-            <img src='assets/shared/mobile/icon-close.svg' alt='hamburger' />
-          ) : (
-            <img
-              src='/assets/shared/mobile/icon-hamburger.svg'
-              alt='hamburger'
-            />
-          )}
+          {isDrowerOpen ? <CrossIcon /> : <Hamburger />}
         </button>
       </div>
 
-      <div
-        className={classes.leftContentContainer}
-        style={{ right: `${isDrowerOpen ? 0 : '-271px'}` }}
-      >
-        <div className={classes.tagContainer}>
-          {['All', 'UI', 'UX', 'Enhancement', 'Bug', 'Feature'].map((tag) => (
-            <Highlight variant={'horizontal'} key={tag}>
-              {tag}
-            </Highlight>
-          ))}
+      <div className='tags-container'>
+        {tags.map((tag) => (
+          <button
+            key={tag}
+            className={`btn-interactive ${activeTag == tag && 'active'}`}
+            onClick={() => setActiveTAg(tag)}
+          >
+            {tag}
+          </button>
+        ))}
+      </div>
+
+      <div className='roadmap-overview'>
+        <div className='head'>
+          <h3>Roadmap</h3>
+
+          <button onClick={roadmapHandler}>View</button>
         </div>
 
-        <div className={classes.roadMapOverview}>
-          <div className={classes.head}>
-            <p>Roadmap</p>
-            <Link href='./roadmap'>View</Link>
-          </div>
-          <ul className={`${classes.list} ${classes.textSecondary}`}>
-            <li>
-              <span>Planned</span>
-              <span>2</span>
-            </li>
-            <li>
-              <span>In-Progress</span>
-              <span>3</span>
-            </li>
-            <li>
-              <span>Live</span>
-              <span>1</span>
-            </li>
-          </ul>
-        </div>
+        <ul className={`roadmap-lists`}>
+          <li className='body-1'>
+            <p>Planned</p>
+            <span>2</span>
+          </li>
+          <li className='body-1'>
+            <p>In-Progress</p>
+            <span>3</span>
+          </li>
+          <li className='body-1'>
+            <p>Live</p>
+            <span>1</span>
+          </li>
+        </ul>
       </div>
 
       {/* backdrop for mobile view */}
       <div
-        className={classes.backdrop}
+        className='backdrop'
         style={{ opacity: `${isDrowerOpen ? '0.5' : '0'}` }}
+      ></div>
+      <div
+        className={
+          isDrowerOpen ? 'sidebar-content' : 'sidebar-content-container'
+        }
       ></div>
     </div>
   );

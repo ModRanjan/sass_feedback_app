@@ -1,5 +1,21 @@
-import { default as RoadpapPage } from '@/design-system/Organisms/Roadmap';
+'use client';
+import { useRouter } from 'next/navigation';
 
-export default function Roadmap() {
-  return <RoadpapPage />;
-}
+import RoadmapNavbar from '@/design-system/Molecules/Navbar/RoadmapNavbar';
+import RoadmapContent from '@/design-system/Organisms/Roadmaps';
+
+const RoadMap = () => {
+  const router = useRouter();
+  return (
+    <>
+      <RoadmapNavbar
+        goBackHandler={() => router.push('/')}
+        feedbackHandler={() => router.push('/feedback/')}
+      />
+
+      <RoadmapContent />
+    </>
+  );
+};
+
+export default RoadMap;
