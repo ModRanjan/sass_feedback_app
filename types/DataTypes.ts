@@ -35,7 +35,7 @@ interface User {
   username: string;
 }
 
-interface Data {
+export interface Data {
   currentUser: User;
   productRequests: ProductRequest[];
 }

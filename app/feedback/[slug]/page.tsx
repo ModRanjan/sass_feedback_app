@@ -1,15 +1,15 @@
-'use client';
+"use client";
 
-import { useEffect, useState } from 'react';
-import { useRouter } from 'next/navigation';
-import { Badge } from '@/design-system/Atom/Badge';
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+import { Badge } from "@/design-system/Atom/Badge";
 
-import ArrowLeftIcon from '@/design-system/Atom/Icons/ArrowLeftIcon';
-import CommentsCard from '@/design-system/Atom/CommentsCard';
+import ArrowLeftIcon from "@/design-system/Atom/Icons/ArrowLeftIcon";
+import CommentsCard from "@/design-system/Atom/CommentsCard";
 
-import { SuggestionCard } from '@/design-system/Molecules/SuggestionCard';
-import data from '@/config/data.json';
-import { ProductRequest } from '@/types/DataTypes';
+import { SuggestionCard } from "@/design-system/Molecules/SuggestionCard";
+import data from "@/config/data.json";
+import { Data, ProductRequest } from "@/types/DataTypes";
 
 const View = ({
   params,
@@ -19,30 +19,32 @@ const View = ({
   searchParams?: { [key: string]: string | string[] | undefined };
 }) => {
   const router = useRouter();
-  const id = params.slug;
+
+  const id = typeof params.slug === "string" ? parseInt(params.slug) : 1;
   const [toggleReply, setToggleReply] = useState(false);
   const [userData, setUserData] = useState<ProductRequest>();
 
   useEffect(() => {
-    if (data.productRequests && id) {
-      setUserData(data.productRequests[id]);
+    const Data: Data = data;
+    if (Data.productRequests && id) {
+      setUserData(Data.productRequests[id]);
     }
   }, [id]);
 
   return (
     <>
-      <div className='feedback-header'>
-        <button className='btn back-btn' onClick={() => router.push('/')}>
-          <span className='-ml-4'>
-            <ArrowLeftIcon width={10} height={10} color='#4661E6' />
+      <div className="feedback-header">
+        <button className="btn back-btn" onClick={() => router.push("/")}>
+          <span className="-ml-4">
+            <ArrowLeftIcon width={10} height={10} color="#4661E6" />
           </span>
 
-          <span className='text-grey'>Go back</span>
+          <span className="text-grey">Go back</span>
         </button>
 
         <button
-          className='btn btn--primary'
-          onClick={() => router.push(`/feedback/${'3'}/edit`)}
+          className="btn btn--primary"
+          onClick={() => router.push(`/feedback/${"3"}/edit`)}
         >
           Edit Feedback
         </button>
@@ -51,12 +53,12 @@ const View = ({
         <SuggestionCard
           likes={25}
           heading={userData.title}
-          tag={'feature'}
+          tag={"feature"}
           messagesCount={userData?.comments?.length ?? 0}
           description={userData?.description}
         />
       )}
-      <div className='comments-container'>
+      <div className="comments-container">
         <h2>{userData?.comments?.length ?? 0} Comments</h2>
 
         {userData?.comments?.map((data, index) => {
@@ -73,23 +75,23 @@ const View = ({
                 }}
                 reply={toggleReply}
               />
-              <span className='saperator' />
+              <span className="saperator" />
             </>
           );
         })}
       </div>
-      <div className='comments-footer-container'>
+      <div className="comments-footer-container">
         <h3>Add Comment</h3>
 
         <textarea
-          className='textarea'
-          placeholder='Type your comment here'
+          className="textarea"
+          placeholder="Type your comment here"
           rows={4}
         />
 
-        <div className='comment-footer'>
-          <p className='body-2'>255 charector left</p>
-          <button className='btn btn--primary'>Post Comment</button>
+        <div className="comment-footer">
+          <p className="body-2">255 charector left</p>
+          <button className="btn btn--primary">Post Comment</button>
         </div>
       </div>
     </>
