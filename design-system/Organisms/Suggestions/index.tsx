@@ -12,7 +12,9 @@ const Suggestions = () => {
   const [upvotes, setUpvotes] = useState(0);
 
   const upVoteHandler = (value: number) => {
-    const tempVote = upvotes + 1;
+    setUpvotes(value);
+    
+    const tempVote = value + 1;
     setUpvotes(tempVote);
   };
 
