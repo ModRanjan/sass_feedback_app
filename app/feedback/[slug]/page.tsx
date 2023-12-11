@@ -10,6 +10,8 @@ import CommentsCard from "@/design-system/Atom/CommentsCard";
 import { SuggestionCard } from "@/design-system/Molecules/SuggestionCard";
 import data from "@/config/data.json";
 import { Data, ProductRequest } from "@/typescript/DataTypes";
+import { useAppDispatch, useAppSelector } from "@/redux/hook";
+import { logIn, logOut } from "@/redux/features/user/userSlice";
 
 const View = ({
   params,
@@ -20,9 +22,10 @@ const View = ({
 }) => {
   const router = useRouter();
 
-  const id = typeof params.slug === "string" ? parseInt(params.slug) : 1;
   const [toggleReply, setToggleReply] = useState(false);
   const [userData, setUserData] = useState<ProductRequest>();
+
+  const id = typeof params.slug === "string" ? parseInt(params.slug) : 1;
 
   useEffect(() => {
     const Data: Data = data;
@@ -30,6 +33,7 @@ const View = ({
       setUserData(Data.productRequests[id]);
     }
   }, [id]);
+
   const upVoteHandler = (value: number) => {
     const tempVote = value + 1;
   };
