@@ -5,7 +5,7 @@ import useWindowSize from '@/hooks/useWindowSize';
 import classes from './RoadMapContent.module.css';
 import Data from '@/config/data.json';
 import FeedbackCard from '@/design-system/Atom/Cards';
-import { ProductRequest } from '@/types/DataTypes';
+import { ProductRequest } from '@/typescript/DataTypes';
 
 const RoadmapContent = () => {
   const [isMob, setIsMob] = useState(true);
@@ -22,7 +22,7 @@ const RoadmapContent = () => {
     else setIsMob(true);
 
     const uniqueStatuses = Array.from(
-      new Set(Data.productRequests.map((request) => request.status))
+      new Set(Data.productRequests.map((request) => request.status)),
     );
 
     const temp = uniqueStatuses.filter((status) => status !== 'suggestion');
@@ -34,25 +34,25 @@ const RoadmapContent = () => {
     if (isMob) {
       if (status === 0)
         setFilteredItems(
-          Data.productRequests.filter((item) => item.status === 'planned')
+          Data.productRequests.filter((item) => item.status === 'planned'),
         );
       else if (status === 1)
         setFilteredItems(
-          Data.productRequests.filter((item) => item.status === 'in-progress')
+          Data.productRequests.filter((item) => item.status === 'in-progress'),
         );
       else if (status === 2)
         setFilteredItems(
-          Data.productRequests.filter((item) => item.status === 'live')
+          Data.productRequests.filter((item) => item.status === 'live'),
         );
     } else {
       const tempPlannedItem: ProductRequest[] = Data.productRequests.filter(
-        (item) => item.status === 'planned'
+        (item) => item.status === 'planned',
       );
       const tempInProgressItem: ProductRequest[] = Data.productRequests.filter(
-        (item) => item.status === 'in-progress'
+        (item) => item.status === 'in-progress',
       );
       const tempLiveItems: ProductRequest[] = Data.productRequests.filter(
-        (item) => item.status === 'live'
+        (item) => item.status === 'live',
       );
 
       setdItemsPlanne(tempPlannedItem);
@@ -92,14 +92,14 @@ const RoadmapContent = () => {
       </div>
 
       {/* headWrapper is only visible for bigger screens */}
-      <div className='roadmap-container'>
+      <div className="roadmap-container">
         <div>
           <div className={`header`}>
-            <h3 className='text-primary-lighter capitalize'>
+            <h3 className="text-primary-lighter capitalize">
               planned &#40;{status}&#41;
             </h3>
 
-            <p className='body-1'>Ideas prioritized for research</p>
+            <p className="body-1">Ideas prioritized for research</p>
           </div>
 
           {!isMob &&
@@ -110,7 +110,7 @@ const RoadmapContent = () => {
                   key={item.id}
                   data={item}
                   comments={item.comments?.length ?? 0}
-                  borderColor='#f49f85'
+                  borderColor="#f49f85"
                 />
               );
             })}
@@ -120,7 +120,7 @@ const RoadmapContent = () => {
           <div className={`header`}>
             <h3>in-progress &#40;{status}&#41;</h3>
 
-            <p className='body-1'>Currently being developed</p>
+            <p className="body-1">Currently being developed</p>
           </div>
 
           {(!isMob || status === 3) &&
@@ -131,7 +131,7 @@ const RoadmapContent = () => {
                   key={item.id}
                   data={item}
                   comments={item.comments?.length ?? 0}
-                  borderColor='#AD1FEA'
+                  borderColor="#AD1FEA"
                 />
               );
             })}
@@ -141,7 +141,7 @@ const RoadmapContent = () => {
           <div className={`header`}>
             <h3>live &#40;{status}&#41;</h3>
 
-            <p className='body-1'>Released features</p>
+            <p className="body-1">Released features</p>
           </div>
 
           {!isMob &&
@@ -152,7 +152,7 @@ const RoadmapContent = () => {
                   key={item.id}
                   data={item}
                   comments={item.comments?.length ?? 0}
-                  borderColor='#62BCFA'
+                  borderColor="#62BCFA"
                 />
               );
             })}

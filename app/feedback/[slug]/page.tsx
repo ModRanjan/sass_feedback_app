@@ -9,7 +9,7 @@ import CommentsCard from "@/design-system/Atom/CommentsCard";
 
 import { SuggestionCard } from "@/design-system/Molecules/SuggestionCard";
 import data from "@/config/data.json";
-import { Data, ProductRequest } from "@/types/DataTypes";
+import { Data, ProductRequest } from "@/typescript/DataTypes";
 
 const View = ({
   params,
@@ -31,12 +31,8 @@ const View = ({
     }
   }, [id]);
   const upVoteHandler = (value: number) => {
-    
-
     const tempVote = value + 1;
-    
   };
-
 
   return (
     <>
@@ -58,7 +54,7 @@ const View = ({
       </div>
       {userData && (
         <SuggestionCard
-        upVoteHandler={upVoteHandler}
+          upVoteHandler={upVoteHandler}
           likes={userData.upvotes}
           heading={userData.title}
           tag={"feature"}

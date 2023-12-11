@@ -3,7 +3,7 @@ import { FC } from 'react';
 import { Badge } from '../Badge';
 import { ArrowUpIcon } from '../Icons/ArrowUpIcon';
 import { CommentsIcon } from '../Icons/CommentsIcon';
-import { ProductRequest } from '@/types/DataTypes';
+import { ProductRequest } from '@/typescript/DataTypes';
 
 interface IFeedbackCardProps {
   borderColor: string;
@@ -18,31 +18,31 @@ const FeedbackCard: FC<IFeedbackCardProps> = ({
 }) => {
   return (
     <div className={`card`} style={{ borderTop: `4px solid ${borderColor}` }}>
-      <div className='card-header'>
-        <div className='card-header-top'>
+      <div className="card-header">
+        <div className="card-header-top">
           <span
-            className='dot'
+            className="dot"
             style={{ backgroundColor: `${borderColor}` }}
           ></span>
-          <p className='body-1'>{data.status}</p>
+          <p className="body-1">{data.status}</p>
         </div>
-        <h3 className='card-header-bottom'>{data.title}</h3>
+        <h3 className="card-header-bottom">{data.title}</h3>
       </div>
 
-      <div className='card-body'>
-        <p className='body-1'>{data.description}</p>
+      <div className="card-body">
+        <p className="body-1">{data.description}</p>
 
         <Badge title={data.category} />
       </div>
 
-      <div className='card-footer flex items-center justify-between mt-3'>
-        <button className='btn btn-interactive'>
-          <ArrowUpIcon width={10} height={7} color='#4661E6' />
+      <div className="card-footer flex items-center justify-between mt-3">
+        <button className="btn btn-interactive">
+          <ArrowUpIcon width={10} height={7} color="#4661E6" />
           {data.upvotes}
         </button>
 
-        <button className='btn '>
-          <CommentsIcon width={18} height={16} color='#CDD2EE' />
+        <button className="btn ">
+          <CommentsIcon width={18} height={16} color="#CDD2EE" />
           {comments}
         </button>
       </div>
